@@ -1,5 +1,5 @@
 import argparse
-from datetime import date
+from datetime import UTC, date, datetime
 
 from .cli_client import create_client
 
@@ -17,7 +17,7 @@ def add_parser(subparsers: argparse._SubParsersAction) -> None:
         "--released_at",
         type=date.fromisoformat,
         help="YYYY-MM-DD",
-        default=date.today(),
+        default=datetime.now(tz=UTC).date(),
     )
 
     parser.set_defaults(func=run)

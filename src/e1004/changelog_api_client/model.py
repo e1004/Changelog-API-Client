@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import date
+from typing import Literal
 from uuid import UUID
 
 
@@ -31,3 +32,20 @@ class VersionsPage:
     versions: list[Version]
     prev_token: str | None
     next_token: str | None
+
+
+@dataclass(slots=True)
+class Change:
+    id: UUID
+    version_id: UUID
+    body: str
+    kind: Literal["added", "changed", "deprecated", "removed", "fixed", "security"]
+
+    @classmethod
+    def make(cls: type["Change"], data: dict) -> "Change":
+        return cls(
+            id=UUID(data["id"]),
+            version_id=UUID(data["version_id"]),
+            body=data["body"],
+            kind=data["kind"],
+        )
