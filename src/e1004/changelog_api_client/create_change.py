@@ -7,8 +7,9 @@ def run(args: argparse.Namespace) -> None:
     version_number = args.version_number
     kind = args.kind
     body = args.body
+    author = args.author
 
-    print(create_client().create_change(version_number, kind, body))
+    print(create_client().create_change(version_number, kind, body, author))
 
 
 def add_parser(subparsers: argparse._SubParsersAction) -> None:
@@ -19,5 +20,6 @@ def add_parser(subparsers: argparse._SubParsersAction) -> None:
         choices=["added", "changed", "deprecated", "removed", "fixed", "security"],
     )
     parser.add_argument("body", help="description of what was changed")
+    parser.add_argument("author", help="who made the change")
 
     parser.set_defaults(func=run)

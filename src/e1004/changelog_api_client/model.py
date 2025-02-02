@@ -40,6 +40,7 @@ class Change:
     version_id: UUID
     body: str
     kind: Literal["added", "changed", "deprecated", "removed", "fixed", "security"]
+    author: str
 
     @classmethod
     def make(cls: type["Change"], data: dict) -> "Change":
@@ -48,4 +49,5 @@ class Change:
             version_id=UUID(data["version_id"]),
             body=data["body"],
             kind=data["kind"],
+            author=data["author"],
         )

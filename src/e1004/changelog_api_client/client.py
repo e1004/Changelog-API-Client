@@ -50,9 +50,13 @@ class ChangelogClient:
             next_token=response["next_token"],
         )
 
-    def create_change(self: Self, version_number: str, kind: str, body: str) -> Change:
+    def create_change(
+        self: Self, version_number: str, kind: str, body: str, author: str
+    ) -> Change:
         url = f"{self.http_client.url}/versions/{version_number}/changes"
-        response = self.http_client.post(url, data={"kind": kind, "body": body}).json()
+        response = self.http_client.post(
+            url, data={"kind": kind, "body": body, "author": author}
+        ).json()
         return Change.make(response["change"])
 
     def delete_change(self: Self, version_number: str, change_id: UUID) -> Change:
