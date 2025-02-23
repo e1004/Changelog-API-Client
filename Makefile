@@ -20,3 +20,7 @@ lint:
 	python3 -m ruff check .
 	python3 -m ruff format . --check
 	MYPYPATH=src python3 -m mypy --namespace-packages --explicit-package-bases src test
+
+.PHONY: build
+build:
+	python3 -m build

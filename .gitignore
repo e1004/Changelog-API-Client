@@ -1,2 +1,3 @@
 *.pem
 cli-test-config.ini
+dist/
