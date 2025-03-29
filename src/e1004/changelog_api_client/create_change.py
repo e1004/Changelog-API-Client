@@ -1,6 +1,7 @@
 import argparse
 
 from .cli_client import create_client
+from .errors import handle_error
 
 
 def run(args: argparse.Namespace) -> None:
@@ -9,7 +10,7 @@ def run(args: argparse.Namespace) -> None:
     body = args.body
     author = args.author
 
-    print(create_client().create_change(version_number, kind, body, author))
+    handle_error(create_client().create_change, version_number, kind, body, author)
 
 
 def add_parser(subparsers: argparse._SubParsersAction) -> None:
