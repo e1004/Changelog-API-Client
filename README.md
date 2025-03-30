@@ -9,11 +9,11 @@ After installing, run `changelog -h` to see available commands.
 Before creating a changelog, run `cli_project -h` to see available commands to create project.
 
 Set `PROJECT_CLI_CONFIG_PATH` environment variable.
-The config file must be in ini-format with url of your Changelog API.
+The config file must be in ini-format with url of Changelog API app.
 
 ```ini
 [DEFAULT]
-url = http://localhost:5000
+url = https://changelogapi.eu/app
 ```
 
 ## API Client
