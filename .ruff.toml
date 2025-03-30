@@ -16,8 +16,11 @@ lint.ignore = [
     "D102"
 ]
 
-lint.per-file-ignores = {"blueprint*" = [
-    "ANN201"
+lint.per-file-ignores = {"errors.py" = [
+    "ANN201",
+    "ANN001",
+    "ANN002",
+    "ANN003",
 ], "test*" = [
     "S101",
     "PLR2004",

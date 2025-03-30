@@ -2,16 +2,18 @@ import argparse
 from uuid import UUID
 
 from .cli_client import create_client
+from .errors import handle_error
 
 
 def run(args: argparse.Namespace) -> None:
     to_version_number = args.to_version_number
     from_version_number = args.from_version_number
     change_id = args.change_id
-    print(
-        create_client().move_change_to_other_version(
-            from_version_number, to_version_number, change_id
-        )
+    handle_error(
+        create_client().move_change_to_other_version,
+        from_version_number,
+        to_version_number,
+        change_id,
     )
 
 
